@@ -72,10 +72,10 @@ class ChromaticsViewController: UIViewController, ChromaticsViewModelDelegate {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(300)
             $0.height.equalTo(90)
-            $0.bottomMargin.equalToSuperview().inset(40)
+            $0.bottomMargin.equalToSuperview().inset(100)
         }
         
-        // Adiciona constraints para os retângulos
+        // Add constraints for the rectangles
         for (index, rectangle) in colorRectangles.enumerated() {
             rectangle.snp.makeConstraints { make in
                 make.centerX.equalToSuperview()
@@ -95,7 +95,7 @@ class ChromaticsViewController: UIViewController, ChromaticsViewModelDelegate {
         viewModel.generateColorPalette()
     }
     
-    // Método do protocolo para notificação de atualização da paleta
+    // Protocol method for palette update notification
     func didUpdateColorPalette(_ colorPalette: [ColorModel]) {
         DispatchQueue.main.async {
             self.updateColors(colorPalette)
@@ -103,7 +103,7 @@ class ChromaticsViewController: UIViewController, ChromaticsViewModelDelegate {
     }
     
     func updateColors(_ colorPalette: [ColorModel]) {
-        // Criar um gradiente de fundo usando as cores da paleta
+        // Create a background gradient using the palette colors
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         
@@ -125,10 +125,10 @@ class ChromaticsViewController: UIViewController, ChromaticsViewModelDelegate {
             let colorModel = colorPalette[index]
             rectangle.backgroundColor = UIColor(hexString: colorModel.hex)
             
-            // Remove todas as subviews existentes do retângulo
+            // Remove all existing subviews from the rectangle
             rectangle.subviews.forEach { $0.removeFromSuperview() }
             
-            // Adiciona o nome real da cor como texto dentro do retângulo
+            // Add the actual color name as text inside the rectangle
             let nameColorLabel = UILabel()
             nameColorLabel.text = colorModel.name
             nameColorLabel.textColor = .white
