@@ -36,7 +36,7 @@ Feel free to explore the code, experiment with new features, and contribute to t
 
 ## API
 
-The color data is obtained from a free API, providing a wide range of colors. Check out [Free Color APIs](https://x-colors.yurace.pro) for similar resources for your projects.
+The color data is obtained from a free API, providing a wide range of colors. Check out [xColors API](https://x-colors.yurace.pro) for similar resources for your projects.
 
 ## Upcoming Features
 
