@@ -24,7 +24,7 @@ Chromatic is a simple iOS app that generates color palettes with HSL names. Tap 
 - **Swift:** The app is written in Swift, Apple's programming language for iOS development.
 - **MVVM Architecture:** Follows the Model-View-ViewModel architectural pattern for clean and organized code.
 - **Programmatic UI:** Utilizes SnapKit for programmatic UI layout, offering flexibility and maintainability.
-- **Cocoapods:** Integrates with Cocoapods for seamless API requests and color data retrieval.
+- **URL Session:** Utilizes native Swift URL Session for seamless API requests and color data retrieval.
 
 ## Usage
 
