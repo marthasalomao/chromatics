@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Chromatics
-//
-//  Created by Martha on 17/12/23.
-//
 
 import UIKit
 
@@ -15,8 +9,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let vc = ChromaticsViewController()
-        window.rootViewController = vc
+        let navigationController = UINavigationController()
+        let coordinator = ChromaticsCoordinator(navigationController: navigationController)
+        coordinator.start()
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
     }
