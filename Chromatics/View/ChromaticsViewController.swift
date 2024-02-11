@@ -104,13 +104,73 @@ class ChromaticsViewController: UIViewController {
     @objc func generatePalette() {
         viewModel.generateColorPalette()
     }
+    
+    func updateBackgroundGradient(colorPalette: [ColorModel], onView view: UIView) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        
+        gradientLayer.colors = colorPalette.map { UIColor(hexString: $0.hex)?.cgColor ?? UIColor.lightGray.cgColor }
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.8)
+        
+        view.layer.sublayers?
+            .filter { $0 is CAGradientLayer }
+            .forEach { $0.removeFromSuperlayer() }
+        
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
 }
 
 extension ChromaticsViewController: ChromaticsViewModelDelegate {
     func didUpdateColorPalette(_ colorPalette: [ColorModel]) {
-        viewModel.updateBackgroundGradient(colorPalette: colorPalette, onView: self.view)
-        viewModel.updateColorRectangles(colorPalette: colorPalette, rectangles: colorRectangles)
-        viewModel.addColorNameLabels(colorPalette: colorPalette, rectangles: colorRectangles)
+        updateBackgroundGradient(colorPalette: colorPalette)
+        updateColorRectangles(colorPalette)
+        addColorNameLabels(colorPalette)
+    }
+    
+    private func updateColorRectangles(_ colorPalette: [ColorModel]) {
+        for (index, rectangle) in colorRectangles.enumerated() {
+            guard index < colorPalette.count else {
+                // Handle the case where there are not enough colors in the palette
+                return
+            }
+            let colorModel = colorPalette[index]
+            rectangle.backgroundColor = UIColor(hexString: colorModel.hex)
+        }
+    }
+    
+    private func addColorNameLabels(_ colorPalette: [ColorModel]) {
+        for (index, rectangle) in colorRectangles.enumerated() {
+            guard index < colorPalette.count else {
+                return
+            }
+            let colorModel = colorPalette[index]
+            rectangle.subviews.forEach { $0.removeFromSuperview() }
+            
+            let nameColorLabel = UILabel()
+            nameColorLabel.text = colorModel.name
+            nameColorLabel.textColor = .white
+            nameColorLabel.font = UIFont.AvenirNextLTProRegular(size: 12)
+            nameColorLabel.textAlignment = .center
+            rectangle.addSubview(nameColorLabel)
+            nameColorLabel.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+        }
+    }
+    
+    func updateBackgroundGradient(colorPalette: [ColorModel]) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        
+        gradientLayer.colors = colorPalette.map { UIColor(hexString: $0.hex)?.cgColor ?? UIColor.lightGray.cgColor }
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.8)
+        
+        view.layer.sublayers?
+            .filter { $0 is CAGradientLayer }
+            .forEach { $0.removeFromSuperlayer() }
+        
+        view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
-
