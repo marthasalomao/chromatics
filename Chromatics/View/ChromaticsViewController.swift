@@ -1,8 +1,9 @@
+
 import UIKit
 import SnapKit
 
-class ChromaticsViewController: UIViewController, ChromaticsViewModelDelegate {
-    private let viewModel = ChromaticsViewModel()
+class ChromaticsViewController: UIViewController {
+    private let viewModel: ChromaticsViewModel
     private var colorRectangles: [UIView] = []
     
     private lazy var titleLabel: UILabel = {
@@ -34,11 +35,20 @@ class ChromaticsViewController: UIViewController, ChromaticsViewModelDelegate {
         return button
     }()
     
+    init(viewModel: ChromaticsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
         setupSubviews()
         setupConstraints()
+        viewModel.delegate = self
         generatePalette()
     }
     
@@ -94,67 +104,13 @@ class ChromaticsViewController: UIViewController, ChromaticsViewModelDelegate {
     @objc func generatePalette() {
         viewModel.generateColorPalette()
     }
-    
-    // Protocol method for palette update notification
+}
+
+extension ChromaticsViewController: ChromaticsViewModelDelegate {
     func didUpdateColorPalette(_ colorPalette: [ColorModel]) {
-        DispatchQueue.main.async {
-            self.updateColors(colorPalette)
-        }
-    }
-    
-    func updateColors(_ colorPalette: [ColorModel]) {
-        // Create a background gradient using the palette colors
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        
-        gradientLayer.colors = colorPalette.map { UIColor(hexString: $0.hex)?.cgColor ?? UIColor.lightGray.cgColor }
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)  // Ponto inicial (canto superior)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.8)    // Ponto final (canto inferior
-        
-        // Remove exist gradient before add a new
-        view.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
-        
-        // Add gradient like a layer on background
-        view.layer.insertSublayer(gradientLayer, at: 0)
-        
-        for (index, rectangle) in colorRectangles.enumerated() {
-            guard index < colorPalette.count else {
-                // Handle the case where there are not enough colors in the palette
-                return
-            }
-            let colorModel = colorPalette[index]
-            rectangle.backgroundColor = UIColor(hexString: colorModel.hex)
-            
-            // Remove all existing subviews from the rectangle
-            rectangle.subviews.forEach { $0.removeFromSuperview() }
-            
-            // Add the actual color name as text inside the rectangle
-            let nameColorLabel = UILabel()
-            nameColorLabel.text = colorModel.name
-            nameColorLabel.textColor = .white
-            nameColorLabel.font = UIFont.AvenirNextLTProRegular(size: 12)
-            nameColorLabel.textAlignment = .center
-            rectangle.addSubview(nameColorLabel)
-            nameColorLabel.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
-        }
+        viewModel.updateBackgroundGradient(colorPalette: colorPalette, onView: self.view)
+        viewModel.updateColorRectangles(colorPalette: colorPalette, rectangles: colorRectangles)
+        viewModel.addColorNameLabels(colorPalette: colorPalette, rectangles: colorRectangles)
     }
 }
 
-extension UIColor {
-    convenience init?(hexString: String) {
-        var hexSanitized = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
-        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
-        
-        var rgb: UInt64 = 0
-        
-        Scanner(string: hexSanitized).scanHexInt64(&rgb)
-        
-        let red = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(rgb & 0x0000FF) / 255.0
-        
-        self.init(red: red, green: green, blue: blue, alpha: 1.0)
-    }
-}
