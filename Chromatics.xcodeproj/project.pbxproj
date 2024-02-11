@@ -13,6 +13,8 @@
 		B1539C2B2B69E1A800F86EDC /* ChromaticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1539C2A2B69E1A800F86EDC /* ChromaticsViewModel.swift */; };
 		B1A1C2192B2F6E4D00B69EEC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1C2182B2F6E4D00B69EEC /* Colors.swift */; };
 		B1A1C21B2B2F727C00B69EEC /* ChromaticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1C21A2B2F727C00B69EEC /* ChromaticsModel.swift */; };
+		B1B479FB2B7813A6002E902A /* ChromaticsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B479FA2B7813A6002E902A /* ChromaticsCoordinator.swift */; };
+		B1B479FD2B784009002E902A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B479FC2B784009002E902A /* UIColor+Extensions.swift */; };
 		B1B5010D2B2F660200DE0FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B5010C2B2F660200DE0FE9 /* AppDelegate.swift */; };
 		B1B5010F2B2F660200DE0FE9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B5010E2B2F660200DE0FE9 /* SceneDelegate.swift */; };
 		B1B501112B2F660200DE0FE9 /* ChromaticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B501102B2F660200DE0FE9 /* ChromaticsViewController.swift */; };
@@ -54,6 +56,8 @@
 		B1539C2A2B69E1A800F86EDC /* ChromaticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaticsViewModel.swift; sourceTree = "<group>"; };
 		B1A1C2182B2F6E4D00B69EEC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B1A1C21A2B2F727C00B69EEC /* ChromaticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaticsModel.swift; sourceTree = "<group>"; };
+		B1B479FA2B7813A6002E902A /* ChromaticsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaticsCoordinator.swift; sourceTree = "<group>"; };
+		B1B479FC2B784009002E902A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B1B501092B2F660200DE0FE9 /* Chromatics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chromatics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B5010C2B2F660200DE0FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1B5010E2B2F660200DE0FE9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +164,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		B1B479F92B78133C002E902A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B1B479FA2B7813A6002E902A /* ChromaticsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		B1B501002B2F660200DE0FE9 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +201,7 @@
 			children = (
 				B1B5010C2B2F660200DE0FE9 /* AppDelegate.swift */,
 				B1B5010E2B2F660200DE0FE9 /* SceneDelegate.swift */,
+				B1B479F92B78133C002E902A /* Coordinator */,
 				B1A1C2162B2F6CB700B69EEC /* ViewModel */,
 				B1A1C2152B2F6C9D00B69EEC /* Model */,
 				B1A1C2142B2F6C7E00B69EEC /* View */,
@@ -232,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				B1D1A8412B58D6D200535B2F /* UIFont+Extensions.swift */,
+				B1B479FC2B784009002E902A /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -478,6 +492,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1B501172B2F660200DE0FE9 /* Chromatics.xcdatamodeld in Sources */,
+				B1B479FD2B784009002E902A /* UIColor+Extensions.swift in Sources */,
+				B1B479FB2B7813A6002E902A /* ChromaticsCoordinator.swift in Sources */,
 				B1D1A8422B58D6D200535B2F /* UIFont+Extensions.swift in Sources */,
 				B1A1C2192B2F6E4D00B69EEC /* Colors.swift in Sources */,
 				B1A1C21B2B2F727C00B69EEC /* ChromaticsModel.swift in Sources */,
