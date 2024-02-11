@@ -1,9 +1,3 @@
-//
-//  UIFont+Extensions.swift
-//  Chromatics
-//
-//  Created by Martha on 18/01/24.
-//
 
 import Foundation
 import UIKit

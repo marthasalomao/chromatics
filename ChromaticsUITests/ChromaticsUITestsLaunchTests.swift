@@ -1,9 +1,3 @@
-//
-//  ChromaticsUITestsLaunchTests.swift
-//  ChromaticsUITests
-//
-//  Created by Martha on 17/12/23.
-//
 
 import XCTest
 

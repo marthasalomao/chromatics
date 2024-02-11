@@ -1,9 +1,3 @@
-//
-//  ChromaticsTests.swift
-//  ChromaticsTests
-//
-//  Created by Martha on 17/12/23.
-//
 
 import XCTest
 @testable import Chromatics

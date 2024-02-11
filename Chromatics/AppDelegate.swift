@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  Chromatics
-//
-//  Created by Martha on 17/12/23.
-//
 
 import UIKit
 import CoreData
