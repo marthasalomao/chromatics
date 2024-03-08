@@ -10,13 +10,14 @@ Chromatic is a simple iOS app that generates color palettes with HSL names. Tap 
 
 ## Screenshots
 
-<div>
+<div style="display: flex;">
+  <!-- GIF -->
+  <img width="48%" height="auto" src="https://i.imgur.com/RBHuNBi.gif"/>
 
-<img width="30%" src="https://github.com/marthasalomao/chromatics/assets/64446599/eed2cc27-d707-4e6e-8391-074eb76602e0"/>
-
-<img width="65%" src="https://github.com/marthasalomao/chromatics/assets/64446599/b5b336c6-44ba-4dd9-a0f1-ec6296e27d8c"/>
-
+  <!-- Imagem -->
+  <img width="48%" height="auto" src="https://github.com/marthasalomao/chromatics/assets/64446599/b5b336c6-44ba-4dd9-a0f1-ec6296e27d8c"/>
 </div>
+
 
 
 ## Technologies Used
