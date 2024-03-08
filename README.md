@@ -1,6 +1,6 @@
 # Chromatic
 
-Chromatic is a simple iOS app that generates color palettes with HSL names. Tap the button, explore various colors, and enjoy the dynamic background gradient. This project showcases the MVVM architecture, programmatic UI, and integration with the Cocoapods library for color data from a dedicated API. 🎨
+Chromatic is a simple iOS app that generates color palettes with HEX names. Tap the button, explore various colors, and enjoy the dynamic background gradient. This project showcases the MVVM architecture, programmatic UI, and integration with the Cocoapods library for color data from a dedicated API. 🎨
 
 ## Features
 
